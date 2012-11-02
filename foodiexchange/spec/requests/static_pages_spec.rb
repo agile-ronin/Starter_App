@@ -5,45 +5,62 @@ describe "Static pages" do
   describe "Home page" do
 
     it "should have the h1 'Foodiexchange'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Foodiexchange')
+      visit root_path
+      page.should have_selector('h1', text: 'Foodiexchange')
     end
 
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
+    it "should have the base title" do
+      visit root_path
       page.should have_selector('title',
-                        :text => "Foodiexchange | Home")
+                        text: "Foodiexchange")
+    end
+
+    it "should not have a custom page title" do
+      visit root_path
+      page.should_not have_selector('title', text: '| Home')
     end
   end
 
-  describe "Contact page" do
-  
-  it "should have the h1 'Contact Us'" do
-      visit '/static_pages/contact'
-      page.should have_selector('h1', :text => 'Contact Us')
+  describe "Help page" do
+
+    it "should have the h1 'Help'" do
+      visit help_path
+      page.should have_selector('h1', text: 'Help')
     end
 
-  
-
-    it "should have the title 'Contact Us'" do
-      visit '/static_pages/contact'
+    it "should have the title 'Help'" do
+      visit help_path
       page.should have_selector('title',
-                        :text => "Foodiexchange | Contact Us")
+                        text: "Foodiexchange | Help")
     end
   end
 
   describe "About page" do
 
-    it "should have the h1 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('h1', :text => 'About Us')
+    it "should have the h1 'About'" do
+      visit about_path
+      page.should have_selector('h1', text: 'About Us')
     end
 
     it "should have the title 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('title',
-                    :text => "Foodiexchange | About Us")
+      visit about_path
+      page.should have_selector('title', text: "Foodiexchange | About Us")
     end
-  end
-end
-  
+	end
+	
+ 
+   describe "Contact page" do
+
+    it "should have the h1 'Contact'" do
+      visit contact_path
+      page.should have_selector('h1', text: 'Contact')
+    end
+
+    it "should have the title 'Contact'" do
+      visit contact_path
+      page.should have_selector('title',
+                    text: "Foodiexchangen | Contact")
+    end
+   end
+   end
+   
